@@ -1,0 +1,30 @@
+{
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+  "@type": "SoftwareSourceCode",
+  "name": "Frontier Swarm",
+  "description": "A typed, durable, eval-oriented multi-agent orchestration reference implementation for TypeScript, built on Vercel eve.",
+  "codeRepository": "https://github.com/Bosheng2020/frontier-swarm",
+  "issueTracker": "https://github.com/Bosheng2020/frontier-swarm/issues",
+  "license": "https://spdx.org/licenses/Apache-2.0",
+  "version": "0.1.0",
+  "datePublished": "2026-10-22",
+  "programmingLanguage": "TypeScript",
+  "runtimePlatform": "Node.js 24",
+  "softwareRequirements": [
+    "eve 0.81.1",
+    "pnpm"
+  ],
+  "applicationCategory": "Multi-agent orchestration reference implementation",
+  "developmentStatus": "active",
+  "isAccessibleForFree": true,
+  "keywords": [
+    "multi-agent orchestration",
+    "AI agents",
+    "agent orchestration",
+    "agentic AI",
+    "LLM evaluation",
+    "parallel agents",
+    "TypeScript",
+    "eve"
+  ]
+}

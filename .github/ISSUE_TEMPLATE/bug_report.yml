@@ -1,0 +1,119 @@
+name: Bug report
+description: Report a reproducible defect in Frontier Swarm.
+title: "[Bug]: "
+labels:
+  - bug
+  - needs-triage
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug. Frontier Swarm is preview software. Search existing issues first and remove secrets, private prompts, personal data, and provider credentials from everything you submit.
+
+        **Security issue?** Stop here and follow `SECURITY.md`; do not disclose vulnerabilities publicly.
+
+  - type: checkboxes
+    id: prerequisites
+    attributes:
+      label: Prerequisites
+      options:
+        - label: I searched existing issues and pull requests.
+          required: true
+        - label: I can reproduce this on the current main branch or latest preview.
+          required: true
+        - label: I removed secrets and sensitive data from this report.
+          required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What is broken, and what user impact does it have?
+      placeholder: A concise description of the defect and impact.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Provide the smallest deterministic sequence that reproduces the problem.
+      placeholder: |
+        1. Install with ...
+        2. Run ...
+        3. Send ...
+        4. Observe ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Include exact errors and which orchestration stage failed.
+    validations:
+      required: true
+
+  - type: input
+    id: commit
+    attributes:
+      label: Frontier Swarm commit or version
+      placeholder: Commit SHA or release tag
+    validations:
+      required: true
+
+  - type: input
+    id: eve
+    attributes:
+      label: Eve version
+      description: Run `pnpm exec eve --version` if needed.
+      placeholder: 0.81.1
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Include OS, Node.js, pnpm, deployment target, model/provider identifier, and sandbox backend. Do not include credentials.
+      placeholder: |
+        OS:
+        Node.js:
+        pnpm:
+        Runtime/deployment:
+        Model/provider:
+        Sandbox:
+    validations:
+      required: true
+
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Redacted diagnostics
+      description: Paste relevant `eve info --json`, test, or trace excerpts after removing sensitive data.
+      render: shell
+
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: Reproduction frequency
+      options:
+        - Every run
+        - Most runs
+        - Intermittent
+        - Happened once
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Link to a minimal public repository or add any other useful information.

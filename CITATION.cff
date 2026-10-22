@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use Frontier Swarm in research or engineering work, please cite the software using this metadata."
+title: "Frontier Swarm: Durable Multi-Agent Orchestration on Vercel eve"
+abstract: "A typed, durable, eval-oriented multi-agent orchestration reference implementation for TypeScript, built on Vercel eve."
+type: software
+version: 0.1.0
+date-released: 2026-10-22
+url: "https://github.com/Bosheng2020/frontier-swarm"
+repository-code: "https://github.com/Bosheng2020/frontier-swarm"
+license: Apache-2.0
+authors:
+  - name: "Frontier Swarm contributors"
+keywords:
+  - multi-agent systems
+  - AI agents
+  - agent orchestration
+  - agent evaluation
+  - TypeScript

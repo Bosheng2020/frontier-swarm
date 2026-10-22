@@ -1,0 +1,29 @@
+# Frontier Swarm
+
+> Frontier Swarm is an open-source TypeScript reference implementation for typed, durable multi-agent orchestration on Vercel's eve framework, version 0.81.1.
+
+The reference workflow is Planner → parallel Analyst/Researcher/Builder → parallel Critic/Verifier → Synthesizer. Handoffs use Zod schemas. The project is preview software, has no public benchmark results, and makes no empirical state-of-the-art claim.
+
+## Start here
+
+- [README](https://github.com/Bosheng2020/frontier-swarm/blob/main/README.md): overview, capabilities, installation, limitations, and repository map.
+- [简体中文 README](https://github.com/Bosheng2020/frontier-swarm/blob/main/README.zh-CN.md): Chinese project overview and quick start.
+- [Architecture](https://github.com/Bosheng2020/frontier-swarm/blob/main/docs/architecture.md): roles, execution stages, data contracts, and failure semantics.
+- [FAQ](https://github.com/Bosheng2020/frontier-swarm/blob/main/docs/faq.md): direct answers to common technical and operational questions.
+- [Framework comparison](https://github.com/Bosheng2020/frontier-swarm/blob/main/docs/comparison.md): neutral, official-docs-based capability map for major agent runtimes.
+
+## Trust and evidence
+
+- [Evaluation](https://github.com/Bosheng2020/frontier-swarm/blob/main/docs/evaluation.md): benchmarks, baselines, metrics, and claim policy.
+- [Security](https://github.com/Bosheng2020/frontier-swarm/blob/main/docs/security.md): trust boundaries, sandbox limitations, approvals, and deployment checklist.
+- [Design references](https://github.com/Bosheng2020/frontier-swarm/blob/main/docs/references.md): primary sources behind architecture and documentation choices.
+- [Vulnerability reporting](https://github.com/Bosheng2020/frontier-swarm/blob/main/SECURITY.md): supported versions and private reporting guidance.
+
+## Development
+
+- [Contributing](https://github.com/Bosheng2020/frontier-swarm/blob/main/CONTRIBUTING.md): setup, architecture constraints, tests, and pull-request requirements.
+- [Agent source](https://github.com/Bosheng2020/frontier-swarm/tree/main/agent): root agent, specialist roles, contracts, tools, and sandbox configuration.
+- [Evaluations](https://github.com/Bosheng2020/frontier-swarm/tree/main/evals): behavioral evaluation cases.
+- [Deterministic tests](https://github.com/Bosheng2020/frontier-swarm/tree/main/tests): seven schema contract tests.
+
+Important: `llms.txt` is a navigation aid based on an informal proposal. It is not an access-control file, benchmark artifact, safety certification, or ranking guarantee.
