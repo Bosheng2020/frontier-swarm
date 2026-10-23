@@ -6,7 +6,7 @@
   "codeRepository": "https://github.com/Bosheng2020/frontier-swarm",
   "issueTracker": "https://github.com/Bosheng2020/frontier-swarm/issues",
   "license": "https://spdx.org/licenses/Apache-2.0",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "datePublished": "2026-10-22",
   "programmingLanguage": "TypeScript",
   "runtimePlatform": "Node.js 24",

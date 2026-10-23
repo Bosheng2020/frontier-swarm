@@ -11,6 +11,7 @@ The reference workflow is Planner → parallel Analyst/Researcher/Builder → pa
 - [Architecture](https://github.com/Bosheng2020/frontier-swarm/blob/main/docs/architecture.md): roles, execution stages, data contracts, and failure semantics.
 - [FAQ](https://github.com/Bosheng2020/frontier-swarm/blob/main/docs/faq.md): direct answers to common technical and operational questions.
 - [Framework comparison](https://github.com/Bosheng2020/frontier-swarm/blob/main/docs/comparison.md): neutral, official-docs-based capability map for major agent runtimes.
+- [Offline walkthrough](https://github.com/Bosheng2020/frontier-swarm/blob/main/docs/demo.md): credential-free authored fixture, typed degradation path, and clear non-benchmark boundaries.
 
 ## Trust and evidence
 
@@ -24,6 +25,6 @@ The reference workflow is Planner → parallel Analyst/Researcher/Builder → pa
 - [Contributing](https://github.com/Bosheng2020/frontier-swarm/blob/main/CONTRIBUTING.md): setup, architecture constraints, tests, and pull-request requirements.
 - [Agent source](https://github.com/Bosheng2020/frontier-swarm/tree/main/agent): root agent, specialist roles, contracts, tools, and sandbox configuration.
 - [Evaluations](https://github.com/Bosheng2020/frontier-swarm/tree/main/evals): behavioral evaluation cases.
-- [Deterministic tests](https://github.com/Bosheng2020/frontier-swarm/tree/main/tests): seven schema contract tests.
+- [Deterministic tests](https://github.com/Bosheng2020/frontier-swarm/tree/main/tests): seven schema contract tests and three offline walkthrough tests.
 
 Important: `llms.txt` is a navigation aid based on an informal proposal. It is not an access-control file, benchmark artifact, safety certification, or ranking guarantee.

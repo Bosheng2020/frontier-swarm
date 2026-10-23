@@ -1,5 +1,7 @@
 # Frontier Swarm — Durable Multi-Agent Orchestration on Vercel eve
 
+**Build auditable multi-agent workflows with typed handoffs, bounded parallelism, independent review, and explicit degraded states.**
+
 [![CI](https://github.com/Bosheng2020/frontier-swarm/actions/workflows/ci.yml/badge.svg)](https://github.com/Bosheng2020/frontier-swarm/actions/workflows/ci.yml)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![Node.js 24](https://img.shields.io/badge/Node.js-24-339933.svg)](https://nodejs.org/)
@@ -9,17 +11,41 @@ Frontier Swarm is an Apache-2.0 TypeScript reference implementation for staged m
 
 [English](README.md) · [简体中文](README.zh-CN.md) · [Architecture](docs/architecture.md) · [Comparison](docs/comparison.md) · [Evaluation](docs/evaluation.md) · [Security](docs/security.md) · [FAQ](docs/faq.md)
 
-## At a glance
+## See the orchestration in seconds
 
-| Capability | Evidence | Limitation |
-| --- | --- | --- |
-| Four-stage durable DAG | [`run_swarm.ts`](agent/tools/run_swarm.ts) | Fixed topology |
-| Three-way generation + two-way review | Two `Promise.all` stage barriers in [`run_swarm.ts`](agent/tools/run_swarm.ts) | No public latency comparison |
-| Typed handoffs | [`contracts.ts`](agent/lib/contracts.ts) | Schema validity does not imply factual correctness |
-| Explicit degradation | `completed_with_degradation` path in [`run_swarm.ts`](agent/tools/run_swarm.ts) | Planner and Synthesizer failures remain fatal |
-| Narrow tool surface | [Root agent](agent/agent.ts) and [Researcher](agent/subagents/researcher/agent.ts) | Only Researcher has `web_search`; no repository-write or deployment tools |
-| Deterministic checks | [Seven schema tests](tests/contracts.test.ts) | No deterministic end-to-end orchestration fixture yet |
-| Behavioral eval definitions | [`evals/`](evals/) | Provider-backed results are not published |
+<p align="center">
+  <img src="assets/frontier-swarm-demo.gif" alt="Offline deterministic walkthrough of the Frontier Swarm orchestration stages using an authored fixture" width="960">
+</p>
+
+The animation mirrors the offline deterministic walkthrough exposed by `pnpm demo`. Its authored fixture makes the stage order, fan-out, typed handoffs, review gates, and terminal status inspectable without model credentials.
+
+## Why Frontier Swarm
+
+- **Typed boundaries, not transcript soup.** Successful role outputs are Zod-validated before use; selected worker and reviewer failures use typed fallbacks and remain visible in diagnostics.
+- **Parallelism where it is explicit.** Three specialists explore independently, then a Critic and Verifier review in parallel.
+- **Failure is data.** Partial worker or reviewer failures become an explicit `completed_with_degradation` result instead of disappearing from the final answer.
+
+## Try the architecture without credentials
+
+```bash
+git clone https://github.com/Bosheng2020/frontier-swarm.git && cd frontier-swarm
+pnpm install --frozen-lockfile
+pnpm demo
+```
+
+Expected excerpt:
+
+```text
+[1/4] PLAN        Planner       ✓ PlanSchema · 3 bounded workstreams
+[2/4] EXPLORE     parallel fan-out (peak concurrency: 3)
+[3/4] REVIEW      parallel independent review
+[4/4] SYNTHESIZE  Synthesizer   ✓ FinalAnswerSchema
+RESULT  completed
+```
+
+`pnpm demo` is an **offline deterministic walkthrough using an authored fixture** for inspecting the orchestration contract. It does not call a model, reproduce a live eve session, measure answer quality, or constitute a benchmark. For a real model-backed run, configure provider credentials and use `pnpm dev`.
+
+If this execution pattern is useful, [Star the repository](https://github.com/Bosheng2020/frontier-swarm) to follow releases.
 
 > [!WARNING]
 > Frontier Swarm is a preview. It has **not** established state-of-the-art performance, and this repository currently publishes **no public benchmark results**. The architecture is experimental, interfaces may change, and model calls can be expensive. Do not use it for consequential decisions or irreversible actions without independent validation and explicit human approval.
@@ -51,6 +77,18 @@ The two fan-out stages are deliberate:
 4. **Synthesize:** The Synthesizer reconciles the reviewed material, labels uncertainty, and returns one coherent result.
 
 Each declared eve subagent has its own authored instructions and capability configuration. In this reference, only the Researcher exposes `web_search`; the other specialists expose no tools. Delegation is not treated as a security boundary: sensitive tools still require authorization, least-privilege access, and human approval where appropriate. See [Architecture](docs/architecture.md) and [Security](docs/security.md).
+
+## At a glance
+
+| Capability | Evidence | Limitation |
+| --- | --- | --- |
+| Four-stage durable DAG | [`run_swarm.ts`](agent/tools/run_swarm.ts) | Fixed topology |
+| Three-way generation + two-way review | Two `Promise.all` stage barriers in [`run_swarm.ts`](agent/tools/run_swarm.ts) | No public latency comparison |
+| Typed handoffs | [`contracts.ts`](agent/lib/contracts.ts) | Schema validity does not imply factual correctness |
+| Explicit degradation | `completed_with_degradation` path in [`run_swarm.ts`](agent/tools/run_swarm.ts) | Planner and Synthesizer failures remain fatal |
+| Narrow tool surface | [Root agent](agent/agent.ts) and [Researcher](agent/subagents/researcher/agent.ts) | Only Researcher has `web_search`; no repository-write or deployment tools |
+| Deterministic checks | [Seven schema tests](tests/contracts.test.ts) plus [three offline walkthrough tests](tests/demo.test.ts) | No deterministic live-workflow fixture yet |
+| Behavioral eval definitions | [`evals/`](evals/) | Provider-backed results are not published |
 
 ## When to use Frontier Swarm
 
@@ -96,7 +134,7 @@ Quality, latency, and cost depend on the selected models, prompts, tools, provid
 
 - Node.js 24 or newer
 - pnpm
-- Credentials for the model/provider configured by the agent; see the [eve getting-started guide](https://eve.dev/docs/getting-started)
+- Credentials for the configured model/provider only when running a live session or provider-backed eval; see the [eve getting-started guide](https://eve.dev/docs/getting-started)
 
 ### Install and inspect
 
@@ -107,7 +145,7 @@ pnpm install --frozen-lockfile
 pnpm check
 ```
 
-`pnpm check` runs type checking, seven deterministic schema tests, `eve info`, and a production build. It does not run live model evals.
+`pnpm check` runs type checking, ten deterministic tests (seven schema tests and three offline walkthrough tests), `eve info`, and a production build. It does not run live model evals.
 
 ### Run locally
 
@@ -140,6 +178,7 @@ The default CI intentionally avoids live provider-backed evaluation: unattended 
 agent/                 Root orchestrator, tools, and specialist subagents
 evals/                 eve behavioral evaluations and fixtures
 docs/architecture.md   Execution model and role contracts
+docs/demo.md           Credential-free walkthrough modes and boundaries
 docs/evaluation.md     Evaluation policy and future benchmark protocol
 docs/security.md       Threat model and deployment hardening guidance
 docs/faq.md            Direct answers to common framework questions

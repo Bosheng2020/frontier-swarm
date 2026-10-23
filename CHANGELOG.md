@@ -6,6 +6,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-10-22
+
+### Added
+
+- Credential-free `pnpm demo` walkthrough with normal, typed-degradation, and JSON modes.
+- Three deterministic walkthrough tests using the live `SwarmRunSchema` contract.
+- A short animated orchestration walkthrough and 1280×640 social preview asset.
+- Maintainer launch kit with channel-native, non-manipulative distribution guidance.
+
+### Changed
+
+- Reworked the English and Chinese README first screens around the demo, differentiators, and three-command trial path.
+- Clarified the boundary between the authored walkthrough fixture, deterministic tests, live provider sessions, evals, and future benchmarks.
+
+## [0.1.0] - 2026-10-22
+
 ### Added
 
 - Preview implementation of a staged multi-agent pipeline: Planner → parallel Analyst/Researcher/Builder → parallel Critic/Verifier → Synthesizer.
@@ -32,3 +48,7 @@ Release checklist:
 3. Include migration notes for every breaking change.
 4. Link reproducible benchmark artifacts for any performance claim.
 -->
+
+[Unreleased]: https://github.com/Bosheng2020/frontier-swarm/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/Bosheng2020/frontier-swarm/compare/v0.1.0...v0.1.1
+[0.1.0]: https://github.com/Bosheng2020/frontier-swarm/releases/tag/v0.1.0

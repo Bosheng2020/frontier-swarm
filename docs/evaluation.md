@@ -24,11 +24,12 @@ Ordinary CI currently runs these checks without provider credentials:
 
 - TypeScript checking and production build compilation;
 - agent and subagent discovery through `eve info`;
-- seven Zod schema contract tests.
+- seven Zod schema contract tests;
+- three offline walkthrough tests covering the normal trace, typed degradation, and JSON contract output.
 
 Deterministic end-to-end orchestration fixtures are not implemented yet. Future CI coverage should add stage ordering, fan-out/gather, cancellation, timeout, partial-failure, prompt-injection, and unsafe-tool regression cases without live provider calls.
 
-Deterministic checks establish runtime behavior, not answer quality on open-ended tasks.
+The offline walkthrough uses an authored fixture rather than a live workflow fixture. Deterministic checks establish contract and presentation behavior, not answer quality on open-ended tasks.
 
 ### Behavioral evals
 

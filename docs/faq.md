@@ -36,11 +36,11 @@ No. The root agent is instructed to answer simple factual, conversational, forma
 
 ## What do `fast`, `balanced`, and `deep` change?
 
-In v0.1.0 they are advisory depth labels included in agent prompts and structured output. They do not change the number of agents, models, stages, concurrency, or hard resource limits.
+In the current v0.1.x implementation they are advisory depth labels included in agent prompts and structured output. They do not change the number of agents, models, stages, concurrency, or hard resource limits.
 
 ## Which model does Frontier Swarm use?
 
-Version 0.1.0 centralizes role-model selection in `agent/lib/models.ts` and currently configures `openai/gpt-6.1-sol`. Adopters can replace this mapping with supported provider/model identifiers and should rerun deterministic checks plus task-specific evaluations after any change.
+The current implementation centralizes role-model selection in `agent/lib/models.ts` and configures `openai/gpt-6.1-sol`. Adopters can replace this mapping with supported provider/model identifiers and should rerun deterministic checks plus task-specific evaluations after any change.
 
 ## Can Frontier Swarm browse the web?
 
@@ -58,7 +58,7 @@ No. The reference project uses JustBash for a portable virtual filesystem and sh
 
 ## How is Frontier Swarm evaluated?
 
-Default CI runs type checking, seven deterministic schema tests, eve agent discovery, and a production build. Provider-backed behavioral evals are opt-in because they incur cost and are nondeterministic. A valid multi-agent comparison should include an equivalent single-agent baseline and report quality, evidence, reliability, safety, latency, tokens, and cost.
+Default CI runs type checking, seven deterministic schema tests, three offline walkthrough tests, eve agent discovery, and a production build. The walkthrough uses an authored fixture to demonstrate contracts and failure vocabulary without measuring model quality. Provider-backed behavioral evals are opt-in because they incur cost and are nondeterministic. A valid multi-agent comparison should include an equivalent single-agent baseline and report quality, evidence, reliability, safety, latency, tokens, and cost.
 
 ## How is Frontier Swarm different from a generic agent loop?
 
@@ -74,4 +74,4 @@ Yes. eve discovers agents, tools, and subagents from the filesystem. You can mod
 
 ## Where should I start?
 
-Read the root [README](../README.md), install with `pnpm install --frozen-lockfile`, inspect discovery with `pnpm exec eve info`, and run `pnpm dev`. Before deployment, read the [security model](security.md). Before publishing performance claims, read the [evaluation policy](evaluation.md).
+Read the root [README](../README.md), install with `pnpm install --frozen-lockfile`, and inspect the credential-free walkthrough with `pnpm demo`. Then inspect discovery with `pnpm exec eve info` and configure a provider before `pnpm dev`. Before deployment, read the [security model](security.md). Before publishing performance claims, read the [evaluation policy](evaluation.md).

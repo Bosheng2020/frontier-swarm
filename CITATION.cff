@@ -3,7 +3,7 @@ message: "If you use Frontier Swarm in research or engineering work, please cite
 title: "Frontier Swarm: Durable Multi-Agent Orchestration on Vercel eve"
 abstract: "A typed, durable, eval-oriented multi-agent orchestration reference implementation for TypeScript, built on Vercel eve."
 type: software
-version: 0.1.0
+version: 0.1.1
 date-released: 2026-10-22
 url: "https://github.com/Bosheng2020/frontier-swarm"
 repository-code: "https://github.com/Bosheng2020/frontier-swarm"

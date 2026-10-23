@@ -110,7 +110,7 @@ Subagent delegation is not an authorization boundary. Tool approvals, connection
 
 ## Data contracts
 
-The v0.1.0 implementation validates every model handoff with Zod. The Planner returns:
+The current v0.1.x implementation validates every model handoff with Zod. The Planner returns:
 
 ```text
 problemFrame

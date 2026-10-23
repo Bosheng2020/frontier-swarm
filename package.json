@@ -1,6 +1,6 @@
 {
   "name": "frontier-swarm",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Typed, durable, eval-oriented multi-agent orchestration on Vercel eve with parallel specialists and independent review.",
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   "scripts": {
     "build": "eve build",
     "check": "pnpm typecheck && pnpm test && pnpm exec eve info --json && pnpm build",
+    "demo": "node scripts/demo.ts",
     "deploy": "eve deploy",
     "dev": "eve dev",
     "eval": "eve eval",
